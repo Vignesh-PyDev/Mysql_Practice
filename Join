@@ -1,0 +1,96 @@
+------------------------------ Commands Entered ------------------------------
+select * from bus b join route r on b.busid = r.busid;
+------------------------------------------------------------------------------
+select * from bus b join route r on b.busid = r.busid
+SQL1024N  A database connection does not exist.  SQLSTATE=08003
+
+SQL1024N  A database connection does not exist.
+
+Explanation: 
+
+There is no connection to a database. Other SQL statements cannot be
+processed unless an SQL CONNECT was previously executed.
+
+The command cannot be processed.
+
+User response: 
+
+If the error occurred when disconnecting from the database, continue
+processing. If the error occurred on another SQL statement, issue an SQL
+CONNECT statement and resubmit the command or statement.
+
+ sqlcode: -1024
+
+ sqlstate: 08003
+
+
+
+------------------------------ Commands Entered ------------------------------
+connect to ZULKI ;
+------------------------------------------------------------------------------
+connect to ZULKI 
+
+   Database Connection Information
+
+ Database server        = DB2/NT 9.7.0
+ SQL authorization ID   = SSN
+ Local database alias   = ZULKI
+
+
+A JDBC connection to the target has succeeded.
+------------------------------ Commands Entered ------------------------------
+select * from bus b join route r on b.busid = r.busid;
+------------------------------------------------------------------------------
+select * from bus b join route r on b.busid = r.busid
+
+BUSID  BUSTYPE ROUTEID DEPARTURE  DESTINATION BUSID 
+------ ------- ------- ---------- ----------- ------
+   300 VA      A01     Chennai    Banglore       300
+   200 SL      C01     Coimbatore Hyderabad      200
+
+  2 record(s) selected.
+
+
+------------------------------ Commands Entered ------------------------------
+select * from bus b left outer join route r on b.busid = r.busid;
+------------------------------------------------------------------------------
+select * from bus b left outer join route r on b.busid = r.busid
+
+BUSID  BUSTYPE ROUTEID DEPARTURE  DESTINATION BUSID 
+------ ------- ------- ---------- ----------- ------
+   300 VA      A01     Chennai    Banglore       300
+   200 SL      C01     Coimbatore Hyderabad      200
+   100 SSL     -       -          -                -
+
+  3 record(s) selected.
+
+
+------------------------------ Commands Entered ------------------------------
+select * from bus b right outer join route r on b.busid = r.busid;
+------------------------------------------------------------------------------
+select * from bus b right outer join route r on b.busid = r.busid
+
+BUSID  BUSTYPE ROUTEID DEPARTURE  DESTINATION BUSID 
+------ ------- ------- ---------- ----------- ------
+   300 VA      A01     Chennai    Banglore       300
+     - -       B01     Banglore   Chennai          -
+   200 SL      C01     Coimbatore Hyderabad      200
+
+  3 record(s) selected.
+
+
+------------------------------ Commands Entered ------------------------------
+select * from bus b full outer join route r on b.busid = r.busid;
+------------------------------------------------------------------------------
+select * from bus b full outer join route r on b.busid = r.busid
+
+BUSID  BUSTYPE ROUTEID DEPARTURE  DESTINATION BUSID 
+------ ------- ------- ---------- ----------- ------
+   300 VA      A01     Chennai    Banglore       300
+     - -       B01     Banglore   Chennai          -
+   200 SL      C01     Coimbatore Hyderabad      200
+   100 SSL     -       -          -                -
+
+  4 record(s) selected.
+
+

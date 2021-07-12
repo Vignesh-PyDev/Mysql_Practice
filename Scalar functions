@@ -1,0 +1,40 @@
+
+select empno,salary,comm,salary+comm as income ,salary * 0.1 as Tax10 from employee where salary > 20000 order by empno
+
+select mgrno,deptname from department where mgrno is null
+
+select deptname, coalesce(mgrno,'Unknown') As manager from department
+
+select empno, salary, comm,bonus, salary + coalesce(bonus,0) as totalincome from employee
+
+select empno,salary ,empno, decimal (salary * 1.0345,8,2), salary*1.0345 as test from employee where salary > 2000
+
+select empno,salary ,empno, decimal (salary * 1.0345,8,2), decimal (salary * 1.0345+0.005,8,2),salary*1.0345  from employee
+
+select empno, comm, salary, (comm/salary)*100 as sample from employee where (comm/salary)*100>5 order by empno
+
+select empno, salary, bonus, (bonus/salary)*100 as sample1 from employee where (bonus/salary)*100>1 
+update employee set bonus = null where empno = 000010
+
+select bonus from employee
+
+select comm from employee where comm is null
+select * from employee
+
+select birthdate from employee
+
+select empno, lastname,birthdate, current_date-birthdate as agee from employee  where current_date-birthdate > 500000 order by agee desc
+
+select hiredate, current_date-hiredate as difference,year(current_date-hiredate) as years, month(current_date-hiredate) as months, day(current_date-hiredate) as days from employee
+where year(current_date-hiredate)>15 order by years desc
+
+select current_date + 3 days from employee
+
+
+select projno,prstdate,prstdate + 2 months + 15 days from project where projno = 'AD3100'
+
+select substr(projno,1,2) from project where  projno like 'IF%'
+
+select lastname concat ' ' concat firstnme as name from employee
+
+select * from project 

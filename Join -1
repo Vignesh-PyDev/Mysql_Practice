@@ -1,0 +1,20 @@
+select d.deptname, d.deptno , p.projname, p.projno from department d join project p on d.deptno = p.deptno
+
+select d.deptname, d.deptno , p.projname, p.projno from department d left outer join project p on d.deptno = p.deptno  
+
+select d.deptname, d.deptno , p.projname, p.projno from department d right outer join project p on d.deptno = p.deptno
+
+select d.deptname, d.deptno , p.projname, p.projno from department d join project p on d.mgrno = p.respemp
+
+select d.deptname, d.deptno , p.projname, p.projno,mgrno from department d, project p where d.mgrno=p.respemp intersect (select d.deptname, d.deptno , p.projname, p.projno,mgrno from department d, project p where  d.deptno = p.deptno) 
+select d.deptname, d.deptno , p.projname, p.projno,mgrno from department d, project p where d.mgrno=p.respemp or d.deptno = p.deptno order by d.deptname; 
+
+select d.deptname, d.deptno , p.projname, p.projno,mgrno from department d, project p where d.mgrno=p.respemp
+
+select * from project;
+
+select * from department;
+
+select projno, projname, respemp, d.deptno, deptname from project p join department d on p.deptno=d.deptno where respemp <> mgrno
+select destination,routeid from route where busid is null or destination='Chennai'
+select * from route

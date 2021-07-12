@@ -1,0 +1,10 @@
+select workdept,empno,lastname, salary from employee where salary >= (select avg(salary)+5000 from employee) order by workdept , empno
+
+select empno, lastname from employee where empno not in (select empno from emp_act)
+
+select d.deptname,e.workdept,e.lastname,e.firstnme from employee e ,department d where e.workdept=d.deptno and workdept not in (select workdept from employee where sex = 'F' group by workdept)
+
+
+
+select * from employee order by workdept
+

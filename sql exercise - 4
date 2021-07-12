@@ -1,0 +1,28 @@
+select lastname, firstnme ,D.deptname from employee E, department D where D.deptno = E.workdept order by  D.deptname,lastname, firstnme
+
+select lastname, firstnme,deptname,job,deptno from employee E, department D where D.deptno = E.workdept and  E.job <> 'MANAGER' and D.deptno between 'A02' and 'D22' 
+order by deptname,job, lastname, firstnme
+
+select lastname,firstnme,deptname,job from employee E, department D where D.mgrno = E.empno order by deptname 
+
+select lastname,firstnme,deptname,job from employee E, department D where D.deptno = E.workdept and job = 'MANAGER' 
+
+select  e.projno, projname,actno from project p, emp_act e where e.projno = p.projno and p.projno like 'AD%' 
+
+select  empno,lastname,projno from project p, employee e where p.deptno = e.workdept and p.projno = 'AD3113' order by empno, projno
+
+select  e.projno, projname,empno,actno,emstdate from project p, emp_act e where e.projno = p.projno and emstdate > '01/01/2002' order by projno, empno, actno
+
+select e.workdept, e.lastname,a.projno,p.projname,a.actno from project p,employee e,emp_act a where e.empno = a.empno and a.projno = p.projno and e.workdept = 'A00' order by projname, actno
+
+select distinct e.workdept, e.lastname,a.projno,p.projname,a.actno from project p,employee e,emp_act a where e.empno = a.empno and a.projno = p.projno and e.workdept between 'A00' and 'C01' 
+order by e.workdept,e.lastname,a.actno
+
+select a.actno,a.emstdate,a.projno,d.mgrno,e.lastname from department d,employee e,emp_act a where a.empno=d.mgrno and a.empno=e.empno and emstdate > '01/01/2002'
+
+select d.deptno,e.lastname,m.lastname,e.hiredate,m.hiredate from department d,employee e,employee m where m.empno =  d.mgrno and e.workdept = d.deptno
+and e.hiredate<m.hiredate and d.deptno= 'A00'
+
+select * from department;
+
+select * from employee order by workdept

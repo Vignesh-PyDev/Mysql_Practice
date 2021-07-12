@@ -1,0 +1,32 @@
+select * from employee;
+
+select lastname, salary, decimal(salary*1.05,10,2) as incY, decimal(salary/12*1.05,10,2) as incM from employee where salary >= 20000 order by salary desc
+
+select lastname,edlevel, salary+1200 as NewSalary,decimal( bonus/2,5,2) as NewBonus from employee where edlevel in (18,20) order by edlevel desc, newsalary
+
+select workdept,lastname,salary,salary-1000 as decsalary from employee where workdept='D11' and salary >= 1.2*20000 and salary <= 0.8*20000 order by salary
+
+select workdept,lastname,salary,salary*0.10+salary ,salary+comm+bonus as INCOME from employee where workdept = 'D11' and salary+comm+bonus > salary*0.10+salary
+
+select deptno,deptname,mgrno, coalesce (mgrno,'Unknown') as MGRNO from department 
+
+select projno,majproj,coalesce (majproj,'MAINPROJECT') as MAJORPROJECT from project where projno like 'MA%' order by projno
+
+select empno,lastname,year(hiredate - birthdate) as AGE from employee where year(hiredate - birthdate)<25 order by age, empno
+
+select * from project
+
+select prstdate,projno, year(prstdate) as year,month(prstdate) as month from project where prendate = '01/12/1982' order by projno
+
+select  prendate-prstdate,year(prendate-prstdate)*52+month(prendate-prstdate)*4,day(prendate-prstdate),prstdate,prendate from project
+
+select week(prstdate),prstdate from project
+
+select projno,prendate as estimated, months_between(prendate,prstdate)*30 as expected  from project where projno like 'MA%' order by projno
+
+select months_between(to_date('01/01/2000','dd/mm/yyyy'),to_date('20/07/1969','dd/mm/yyyy'))*30  from sysibm.sysdummy1 
+select years_between(current_date, hiredate) from employee
+
+select  months_between(prendate,prstdate)*4 from project
+select * from department
+describe table project

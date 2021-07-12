@@ -1,0 +1,19 @@
+select rank()over(order by salary desc),empno,salary from employee order by lastname
+
+select workdept,sum(salary),rank()over(order by sum(salary) desc),dense_rank() over(order by sum(salary) desc) from employee group by workdept order by sum(salary) desc
+
+select workdept ,lastname,salary,row_number()over(order by workdept,lastname) from employee order by lastname
+
+select workdept,job,rownumber() over(partition by job order by job) from employee
+
+select workdept,salary,avg(salary) over(partition by workdept)as AVG from employee
+
+select workdept,salary,sum(salary) over(order by empno) from employee order by workdept
+
+select salary,(salary*100)/sum(salary) over () as percentage from employee order by percentage desc
+
+select lastname,comm,workdept,sex,sum(comm) over(partition by workdept,sex) from employee
+
+select workdept,sex,sum(salary)from employee where sex='F' group by cube(workdept,sex)  order by workdept
+
+select workdept,sex,job,sum(salary)from employee where sex='F' group by cube(workdept,sex,job)  order by workdept

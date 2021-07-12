@@ -1,0 +1,28 @@
+select deptno from department union select workdept from employee
+
+select deptname from department union select lastname from employee
+
+select workdept, lastname || ',' || firstnme as NAME, 'Male' as GENDER from employee where sex = 'M' and workdept in ('A00','C01') UNION ALL  
+select workdept, lastname || ',' || firstnme as NAME, 'female' from employee where sex = 'F' and workdept in ('A00','C01') order by  workdept
+
+select mgrno,'Dept' as sample ,deptname as NAME,''  from department where mgrno is not null UNION ALL 
+select mgrno,'mgr:' , lastname as NAME ,job from department D, employee E where D.mgrno = E.empno order by 1,2 desc
+
+select empno, substr(firstnme,1,1)|| '.' || midinit  ,lastname,'Salary->',salary as INCOME,1 as sort from employee UNION ALL
+select empno,'' ,'','Bonus->',coalesce(Bonus,800) as INCOME,2 from employee UNION ALL
+select empno,'' ,'','Comm->',comm as INCOME,3 from employee UNION ALL
+select empno,'' ,'','Total->',salary+coalesce(Bonus,800)+comm,4 from employee order by empno,sort
+
+select lastname,edlevel from employee where job = 'DESIGNER' except select lastname,edlevel where edlevel = 18 order by lastname
+
+--SUBQUERY
+
+select empno,lastname from employee  where salary < (select avg(salary)  from employee) 
+
+select empno,lastname from employee  where empno in (select mgrno  from department) 
+
+select deptno,deptname from department where deptno not in (select deptno from project where deptno is not null)
+
+
+
+select * from department

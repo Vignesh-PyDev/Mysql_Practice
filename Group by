@@ -1,0 +1,24 @@
+select workdept,sum(salary) as SUM,count(salary) as COUNT from employee  group by workdept
+
+select substr(workdept,1,1) as Group_workdept,edlevel,decimal(avg(salary),7,2) as Average from employee where edlevel >= 14 group by substr(workdept,1,1),edlevel
+
+select substr(workdept,1,1) as Group_workdept,decimal(avg(salary),7,2) as Average from employee where edlevel >= 18 group by substr(workdept,1,1)
+
+select workdept, edlevel,salary from employee order by workdept
+
+select majproj,deptno, avg(prstaff) as Average, count(*) as count from project group by majproj,deptno
+
+select workdept, sum(salary) as Above50k, count(*) from employee group by workdept having sum(salary) > 50000 order by above50k 
+
+select workdept,job,decimal(avg(salary),9,2) as AVG,count(*) as COUNT from employee where job not in ('MANAGER','DESIGNER','FIELD') 
+group by workdept,job having decimal(avg(salary),9,2)>25000
+
+select workdept,count(*) as Count from employee group by workdept having count(*) > 1
+
+select * from project
+
+select count(distinct bonus) from employee
+
+select workdept,job,avg(salary) as AVG,count(*) from employee where job <> 'MANAGER' group by job,workdept having avg(salary) > 28000 order by AVG desc
+
+select job, count(*) from employee group by job

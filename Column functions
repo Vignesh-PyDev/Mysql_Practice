@@ -1,0 +1,7 @@
+select * from employee
+
+select sum(salary) as SUM, avg(salary) as AVG, max(salary) as MAX, min(salary) as MIN, count(*) as COUNT, COUNT(distinct workdept) as DEPT from employee
+
+select sum(salary) as SUM from employee where workdept like 'D%'
+
+select sum(salary) from employee where job = 'MANAGER'

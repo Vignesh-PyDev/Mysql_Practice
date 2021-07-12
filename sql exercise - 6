@@ -1,0 +1,21 @@
+select lastname,firstnme,'Before' as Status,salary,job from employee where workdept ='D21' and job <> 'MANAGER' UNION 
+select lastname,firstnme,'After',salary*1.10,job from employee where workdept ='D21' and job <> 'MANAGER' order by lastname
+
+select  workdept,empno,salary from employee where workdept = 'A00'   UNION
+select '','Total ->>>>>>',sum(salary)from employee 
+
+
+select empno, substr(firstnme,1,1)|| '.' || midinit  ,lastname,'Salary->',salary as INCOME,1 as sort from employee UNION ALL
+select empno,'' ,'','Bonus->',coalesce(Bonus,800) as INCOME,2 from employee UNION ALL
+select empno,'' ,'','Comm->',comm as INCOME,3 from employee UNION ALL
+select empno,'' ,'','Total->',salary+coalesce(Bonus,800)+comm,4 from employee order by empno,sort
+
+
+select d.deptno,'depname',d.deptname,1 as sort from department d where d.deptno in ('A00','B01','C01') UNION
+select d.deptno,'projectnumber',p.projno,2 from project p,department d where d.deptno = p.deptno and d.deptno in ('A00','B01','C01') UNION
+select d.deptno,'empnumber',e.empno,3 from employee e,department d where d.deptno = e.workdept and d.deptno in ('A00','B01','C01')  order by deptno,sort
+
+select 'Project',projno,respemp,prstdate,prendate from project where projno like 'IF%' UNION
+select projno,'',empno,emstdate,emendate from emp_act where projno like 'IF%' UNION
+
+select * from emp_act

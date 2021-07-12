@@ -1,0 +1,28 @@
+SELECT workdept,sum(salary) as SUM_SALARY from employee group by workdept
+
+SELECT workdept,count(*) as EMP_COUNT from employee group by workdept
+
+SELECT workdept,count(*) as EMP_COUNT from employee group by workdept having count(*) > 3
+
+SELECT workdept,job,count(*) as DESIGNER from employee where job = 'DESIGNER' group by workdept,job having count(*) > 1
+
+select workdept,sex,decimal(avg(salary),7,2) from employee group by sex,workdept 
+select workdept,sex,decimal(avg(salary),7,2) as AVG_SALARY, decimal(avg(bonus),7,2) as AVG_BONUS, decimal(avg(comm),7,2) as AVG_COMM, count(*) as COUNT from employee 
+group by workdept,sex having count(*) > 2 
+
+select workdept,decimal(avg(bonus),7,2) as AVG_BONUS, decimal(avg(comm),7,2) as AVG_COMM from employee group by workdept
+having  decimal(avg(bonus),7,2) > 500 and decimal(avg(comm),7,2) > 2000
+
+select workdept,job,count(*) as COUNT from employee group by workdept,job deptno) = 1
+
+select deptno,count(projno) from project where majproj is not null group by deptno having count(projno) = 1
+
+select projno,actno,avg(emptime),count(*) as COUNT from emp_act group by actno,projno
+
+select * from department
+
+select deptno,count(*) as count from department where admrdept <> deptno and mgrno is null group by deptno
+
+select * from project 
+
+
